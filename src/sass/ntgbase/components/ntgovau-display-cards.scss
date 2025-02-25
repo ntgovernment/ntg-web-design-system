@@ -1,0 +1,46 @@
+.ntg-display-cards {
+  .card {
+    &:hover {
+      h3 {
+        color: $ntg-ochre-mid;
+      }
+    }
+  }
+
+  img.card-img-top {
+    height: pxToRem(185px);
+    object-fit: cover;
+  }
+
+  a.outer-link {
+    &:hover {
+      padding-bottom: 1px;
+      color: inherit;
+
+      h3 {
+        color: $ntg-ochre-mid;
+      }
+      a.card-link {
+        &::after {
+          right: pxToRem(-16px);
+          transition: right 300ms ease;
+        }
+      }
+    }
+  }
+
+  .card-body {
+    h3 {
+      color: $ntg-arafura-blue;
+    }
+
+    a.card-link {
+      font-size: pxToRem(14px);
+      font-weight: 700;
+
+      &:hover {
+        padding-bottom: 1px;
+      }
+    }
+  }
+}

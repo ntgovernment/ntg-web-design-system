@@ -1,0 +1,138 @@
+/*
+-----------------------------
+  Footer
+-----------------------------  
+*/
+.ntg-footer {
+  background: $ntg-color-footer-background-dark;
+  position: relative;
+  bottom: 0;
+  &__links {
+    padding-bottom: 2rem;
+    h3 {
+      // border-bottom: 1px solid $ntg-grey-400;
+      padding-bottom: 5px;
+      color: $ntg-color-white;
+    }
+    ul {
+      padding: 0 0 0 18px;
+      li {
+        margin-bottom: 8px;
+      }
+    }
+    a {
+      border: none;
+      text-decoration: none;
+      color: $ntg-color-white;
+
+      &:hover {
+        text-decoration: underline;
+        color: $ntg-color-white;
+      }
+    }
+
+    i[class*="fa-facebook"] {
+      color: $ntg-color-white;
+    }
+
+    i[class*="fa-linked"] {
+      color: $ntg-color-white;
+    }
+
+    i[class*="fa-youtube"] {
+      color: $ntg-color-white;
+    }
+
+    i[class*="fa-instagram"] {
+      color: $ntg-color-white;
+    }
+
+    li::marker {
+      color: $ntg-color-white;
+    }
+
+    &--topics {
+      ul {
+        column-count: 2;
+        column-gap: 35px;
+      }
+    }
+
+    &--social {
+      ul {
+        padding-left: 0 !important;
+        li {
+          list-style: none;
+          margin-bottom: 15px;
+          vertical-align: middle;
+          position: relative;
+          padding-left: 40px;
+        }
+        .fab,
+        .fal {
+          position: absolute;
+          left: 0;
+          top: -5px;
+        }
+      }
+    }
+
+    &--utility {
+      hr {
+        color: $ntg-color-white;
+      }
+      ul {
+        padding: 0;
+        padding-bottom: 0.5rem !important;
+
+        li {
+          list-style: none;
+          display: inline-block;
+          &::after {
+            content: "|";
+            margin: 0 15px;
+            color: $ntg-footer-links;
+          }
+          &:last-child::after {
+            display: none;
+          }
+          a {
+            text-decoration: none;
+            color: $ntg-color-white;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__text {
+    background: $ntg-color-footer-background-dark;
+    span {
+      margin-bottom: 0;
+      font-size: $font-size-sm;
+      color: $ntg-color-white;
+    }
+  }
+}
+
+/* ---------- Mobile footer - topic links ---------- */
+@media (max-width: $media-sm) {
+  .ntg-footer__links--topics ul {
+    column-count: 1;
+    column-gap: 0;
+  }
+}
+
+/* ---------- Footer - logo ---------- */
+// .ntg-bp-logo {
+//   width: 360px;
+// }
+// @media (max-width: 411px) {
+//   .ntg-bp-logo {
+//     width: 280px;
+//   }
+// }

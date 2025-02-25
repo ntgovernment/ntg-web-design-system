@@ -1,0 +1,38 @@
+.ntg-inpage-nav {
+  padding-left: 0;
+  margin: 1rem 0 3rem 0;
+  border-left: 3px solid $ntg-grey-medium-alt;
+  padding-left: 1rem !important;
+
+  .nav-item {
+    list-style: none;
+
+    &:before {
+      content: "";
+    }
+  }
+
+  .nav-item.heading {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0.25rem 0;
+
+    .nav-item {
+      margin-bottom: 0.25rem;
+      list-style: none;
+
+      &:before {
+        content: "";
+      }
+    }
+  }
+
+  .nav-link {
+    display: inline-block;
+    padding: 0;
+
+    &:hover {
+      border-bottom: 1.3px solid transparent;
+    }
+  }
+}

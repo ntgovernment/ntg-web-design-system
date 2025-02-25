@@ -1,0 +1,95 @@
+/*
+-----------------------------
+  Side navigation
+-----------------------------  
+*/
+
+.ntg-sidenav {
+  &__title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-bottom: 2px solid $grey-dark;
+    padding-bottom: 0.5rem;
+
+    &::before {
+      font-family: "Font Awesome 6 Pro";
+      content: "\f053";
+      padding-right: 4px;
+    }
+
+    &.main-topic-page {
+      &::before {
+        content: "";
+      }
+    }
+
+    a {
+      text-decoration: none;
+      &:hover {
+        color: $secondary;
+      }
+      .external::after {
+        content: none;
+      }
+    }
+  }
+
+  // All levels
+  .list-group {
+    margin-top: 0;
+    .list-group-item {
+      border: none;
+      padding-left: 2.75rem;
+      padding-bottom: 0;
+      margin-bottom: 0;
+      font-weight: normal;
+      &.active {
+        font-weight: bold;
+        background: none;
+        border-top: none;
+        border-color: var(--bs-list-group-border-color);
+
+        &::before {
+          font-weight: bold;
+        }
+      }
+      &:before {
+        display: inline-block;
+        position: relative;
+        font-family: $font-icons;
+        content: "\f105";
+        font-size: 1rem;
+        font-weight: 400;
+        top: 0;
+      }
+    }
+  }
+
+  // Level 1 only
+  > .list-group {
+    > .list-group-item {
+      padding: pxToRem(10px) 0;
+      padding-left: 16px;
+      font-weight: normal;
+      border-bottom: var(--bs-list-group-border-width) solid
+        var(--bs-list-group-border-color);
+
+      &.active {
+        font-weight: 600;
+        padding-left: 12px;
+        border-left: 5px solid $primary;
+      }
+      &:before {
+        content: none;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .external::after {
+    content: none;
+  }
+}

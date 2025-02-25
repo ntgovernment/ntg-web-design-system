@@ -1,0 +1,40 @@
+/*
+-----------------------------
+Accordion
+-----------------------------
+*/
+
+.ntg-accordion-toggler {
+  max-width: $ntg-maxwidth;
+}
+
+.ntg-accordion {
+  max-width: $ntg-maxwidth;
+
+  .accordion-button,
+  .accordion-button:not(.collapsed) {
+    color: $ntg-accordion-button-color;
+  }
+
+  .accordion-item {
+    color: $ntg-color-dark;
+  }
+
+  .accordion-button {
+    font-size: pxToRem(22px);
+    font-weight: bold;
+  }
+
+  .accordion-button:not(.collapsed) {
+    background-color: $ntg-accordion-button-active-bg;
+    font-weight: bold;
+  }
+
+  .accordion-button::after {
+    background-image: $ntg-accordion-btn-icon;
+  }
+}
+
+div:has(.ntg-accordion) + div > p:first-child {
+  margin-top: 1.5rem !important;
+}

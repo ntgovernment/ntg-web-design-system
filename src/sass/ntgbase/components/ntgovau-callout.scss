@@ -1,0 +1,72 @@
+/*
+-----------------------------
+Callout
+-----------------------------
+*/
+
+/* Callout */
+.ntg-callout {
+  &__content {
+    border-left: 0.5rem solid $ntg-arafura-blue;
+    border-radius: 0 !important;
+    background-color: $ntg-lightgrey;
+  }
+
+  /* Callout icon */
+  &__icon {
+    font-family: $font-icons;
+    color: $ntg-arafura-blue;
+    margin-right: 1.25rem;
+    margin-top: -0.5rem;
+    font-size: 2rem;
+  }
+
+  /* Callout spacing */
+  &__text {
+    padding-right: 2rem !important;
+    width: 100%;
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: 1rem;
+      margin-top: 0;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: $ntg-color-dark;
+    .ntg-callout__content::after {
+      font-family: $font-icons;
+      color: $ntg-arafura-blue;
+      font-weight: 900;
+      content: "\f105";
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center !important;
+    }
+
+    &:hover {
+      color: $ntg-color-dark;
+      .ntg-callout__content::after {
+        color: $ntg-ochre;
+      }
+    }
+  }
+}
+
+.ntg-callout__text {
+  a {
+    color: $ntg-arafura-blue;
+    text-decoration: underline;
+  }
+  a:hover {
+    color: $ntg-ochre;
+    text-decoration: none;
+  }
+}
