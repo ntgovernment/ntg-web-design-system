@@ -95,9 +95,15 @@ function extractOptions(items) {
     spans.forEach((span) => span.remove()); // Remove excluded spans
 
     const trimmedText = item.textContent.trim().replace(/\n/g, ""); // Clean up item text
-    trimmedText.split(",").forEach((part) => {
-      optionsSet.add(part.trim()); // Add each part to the set
-    });
+    
+
+    // trimmedText.split(",").forEach((part) => {
+    //   optionsSet.add(part.trim()); // Add each part to the set
+    // });
+    // Treat the full item as a single option, without splitting by commas
+    optionsSet.add(trimmedText); // Add the full item to the set
+
+
   });
 
   const extractedOptions = Array.from(optionsSet)
@@ -143,12 +149,20 @@ function populateDropdown(dropdown, options) {
 
   // Add each extracted option to the dropdown
   options.forEach((option) => {
-    option.split(",").forEach((part) => {
-      const newOption = document.createElement("option");
-      newOption.value = part.toLowerCase().replace(/\s+/g, " ");
-      newOption.textContent = part.trim();
-      dropdown.appendChild(newOption);
-    });
+    
+    
+    // option.split(",").forEach((part) => {
+    //   const newOption = document.createElement("option");
+    //   newOption.value = part.toLowerCase().replace(/\s+/g, " ");
+    //   newOption.textContent = part.trim();
+    //   dropdown.appendChild(newOption);
+    // });
+    const newOption = document.createElement('option');
+    newOption.value = option.toLowerCase().replace(/\s+/g, ' '); // Sanitize option value
+    newOption.textContent = option.trim(); // Set the display text of the option
+    dropdown.appendChild(newOption);
+
+    
   });
 }
 
