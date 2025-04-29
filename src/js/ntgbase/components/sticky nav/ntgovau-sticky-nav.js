@@ -56,6 +56,7 @@ function initStickyNav() {
     $(target_list)
       .find('a[href^="#"]')
       .click(function (e) {
+        e.preventDefault();
         $(target_list).find("li.active").removeClass("active");
         //$(target_list).addClass('page-is-animating');
         $(this).closest("li").addClass("active");
