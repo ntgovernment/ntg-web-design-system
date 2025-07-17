@@ -126,6 +126,7 @@ $theme-colors: map-merge($ntg-theme-colours, $theme-colors);
 @import "ntgbase/components/ntgovau-display-cards.scss";
 @import "ntgbase/components/ntgovau-news-cards.scss";
 @import "ntgbase/components/ntgovau-featured-content-small.scss";
+@import "ntgbase/components/ntgovau-floating-button.scss";
 
 // Layout Partials
 @import "ntgbase/partials/ntgovau-utilities.scss";
