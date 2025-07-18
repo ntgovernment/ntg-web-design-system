@@ -278,13 +278,6 @@
             >
           </div>
         </div>
-        <link
-          rel="stylesheet"
-          href="../../src/sass/ntgbase/components/ntgovau-floating-button.scss"
-        />
-        <script type="text/javascript" src="../../src/js/ntgbase/components/ntgovau-floating-button.js"></script>
-          
-        </script>
       </main>
     </div>
 
@@ -306,7 +299,7 @@
 
     <script
       type="text/javascript"
-      src="../../src/js/ntgbase/components/quick exit/ntgovau-quickexit.js"
+      src="../../src/js/ntgbase/components/floating-buttons/floating-buttons.js"
     ></script>
 
     <script>
@@ -314,10 +307,6 @@
         var $span = $('<span class="fa" style="display:none"></span>').appendTo(
           "body"
         );
-        if ($span.css("font-family") !== '"Font Awesome 5 Pro"') {
-          // Fallback Link
-          $("head").append('<link href="./?a=1053458" rel="stylesheet">');
-        }
         $span.remove();
       })(jQuery);
 
