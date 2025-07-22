@@ -15,7 +15,7 @@
     });
 
   // Append the duplicate to the body
-  $("body").append($fixedBtn);
+  $(".content__main").append($fixedBtn);
 
   function updateFloatingButton() {
     var scrollY = $(window).scrollTop();
