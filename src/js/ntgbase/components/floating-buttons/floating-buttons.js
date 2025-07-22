@@ -16,6 +16,7 @@
 
   // Append the duplicate to the body
   $(".content__main").append($fixedBtn);
+  $("#floating-button>div").addClass("px-0");
 
   function updateFloatingButton() {
     var scrollY = $(window).scrollTop();
