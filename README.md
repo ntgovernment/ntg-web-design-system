@@ -1,4 +1,4 @@
-# NT Government Design System for web
+# NT Government Design System for Web
 
 Welcome to the Northern Territory Government Design System for web repository! If you're utilising assets from this repository, please notify us by sending an email to [websupport@nt.gov.au](mailto:websupport@nt.gov.au) so we can include you in our change management communications list.
 
