@@ -1,6 +1,12 @@
+const sass = require("sass");
+
 module.exports = function (grunt) {
   grunt.initConfig({
     sass: {
+      options: {
+        implementation: sass,
+        sourceMap: false,
+      },
       ntgbase: {
         files: {
           "preflight/ntgbase/css/ntgbase.css": "src/sass/ntgbase.scss",
@@ -10,12 +16,12 @@ module.exports = function (grunt) {
         files: {
           "preflight/squiz/squizUI.css": "src/sass/squizUI.scss",
         },
-      },      
+      },
       fontawesomeSCSS: {
         files: {
           "preflight/fontawesome.css": "src/sass/fontawesome.scss",
         },
-      },      
+      },
     },
     cssmin: {
       ntgbase: {
@@ -39,7 +45,7 @@ module.exports = function (grunt) {
             ext: ".min.css",
           },
         ],
-      }, 
+      },
       fontawesome: {
         files: [
           {
@@ -50,7 +56,7 @@ module.exports = function (grunt) {
             ext: ".min.css",
           },
         ],
-      },         
+      },
     },
     uglify: {
       ntgbase: {
@@ -109,18 +115,12 @@ module.exports = function (grunt) {
         dest: "dist/ntgbase/ntg-base-plugins.min.js",
       },
       ntgbase: {
-        src: [
-          "preflight/ntgbase/js/main.min.js",
-        ],
+        src: ["preflight/ntgbase/js/main.min.js"],
         dest: "dist/ntgbase/ntgbase-main.min.js",
       },
 
-      bootstrap: {
-
-      },
-      jquery: {
-
-      },
+      bootstrap: {},
+      jquery: {},
     },
     connect: {
       server: {
@@ -139,7 +139,12 @@ module.exports = function (grunt) {
     watch: {
       ntgbaseSass: {
         files: ["src/sass/ntgbase/*.scss"],
-        tasks: ["sass:ntgbase", "cssmin:ntgbase", "uglify:ntgbase", "concat:ntgbase"],
+        tasks: [
+          "sass:ntgbase",
+          "cssmin:ntgbase",
+          "uglify:ntgbase",
+          "concat:ntgbase",
+        ],
       },
       fontawesomeSass: {
         files: ["src/sass/fontawesome/scss*.scss"],
@@ -152,12 +157,17 @@ module.exports = function (grunt) {
           "src/js/plugins/**/*.js",
           "src/js/ntgbase/**/*.js",
         ],
-        tasks: ["uglify:ntgbase", "concat:ntgbase", "concat:ntgbaseComponents", "concat:ntgbasePlugins"],
+        tasks: [
+          "uglify:ntgbase",
+          "concat:ntgbase",
+          "concat:ntgbaseComponents",
+          "concat:ntgbasePlugins",
+        ],
       },
     },
   });
 
-  grunt.loadNpmTasks("grunt-contrib-sass");
+  grunt.loadNpmTasks("grunt-sass");
   grunt.loadNpmTasks("grunt-contrib-cssmin");
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks("grunt-contrib-concat");
@@ -172,7 +182,6 @@ module.exports = function (grunt) {
     "concat:ntgbaseComponents",
     "concat:ntgbasePlugins",
   ]);
-
 
   grunt.registerTask("squizUI", ["sass:squizUI", "cssmin:squizUI"]);
   grunt.registerTask("fontawesomeSCSS", ["sass:fontawesomeSCSS"]);
