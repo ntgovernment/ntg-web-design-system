@@ -15637,11 +15637,6 @@ iframe, embed, video, object {
     max-width: 1200px;
   }
 }
-/*
------------------------------
-  Images
------------------------------  
-*/
 .content img {
   max-width: 100%;
 }
@@ -15733,11 +15728,6 @@ iframe, embed, video, object {
   clear: both;
 }
 
-/*
------------------------------
-Image - responsive classes applies and resizes to %
------------------------------
-*/
 .imagedropshadow {
   padding: 5px;
   border: solid 1px #efefef;
@@ -15856,6 +15846,18 @@ Image - responsive classes applies and resizes to %
   margin-left: 5px;
 }
 
+img.float-start.imagehalf,
+img.float-start.imagethird,
+img.float-start.imagequarter {
+  margin-right: 1.5rem;
+}
+
+img.float-end.imagehalf,
+img.float-end.imagethird,
+img.float-end.imagequarter {
+  margin-left: 1.5rem;
+}
+
 .imagefull,
 .imagehalf,
 .imagethird,
@@ -15863,11 +15865,6 @@ Image - responsive classes applies and resizes to %
   height: auto;
 }
 
-/*
------------------------------
-Fix image height for IE
------------------------------
-*/
 .image-height-ie {
   min-height: 10px;
   flex-shrink: 0;

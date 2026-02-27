@@ -1,18 +1,63 @@
-/*
------------------------------
-  Images
------------------------------  
-*/
+// =============================================================================
+// ntgovau-images.scss
+// =============================================================================
+//
+// Styles for all image-related patterns in the NT Government Design System.
+//
+// This file contains three groups of image classes:
+//
+//  1. LEGACY CONTENT CLASSES  (.content .imagehalf / .imagethird / .imagequarter)
+//     ─ For backwards-compatible CMS (Squiz Matrix) content.
+//     ─ Applied directly to <img> tags inside a `.content` wrapper.
+//     ─ Pair with Bootstrap float utilities (float-start / float-end).
+//     ─ Collapse to full-width on screens smaller than md (768px).
+//
+//  2. MODERN COMPONENT  (.ntg-image-wrap)
+//     ─ Preferred pattern for new development.
+//     ─ Uses a semantic <figure> element with BEM modifier classes.
+//     ─ Floats alongside body text on md+, stacks full-width on mobile.
+//     ─ Always close wrapping content with .ntg-content-clearfix.
+//
+//  3. STANDALONE FLOAT CLASSES  (.imagehalf / .imagethird / .imagequarter)
+//     ─ Applied directly to <img> tags WITHOUT a .content wrapper.
+//     ─ Used in wysiwyg/CMS contexts where a wrapper div is unavailable.
+//     ─ Pair with Bootstrap float-start / float-end utilities.
+//     ─ Margin gap rules (float-start → margin-right, float-end → margin-left)
+//       are applied via compound selectors below.
+//
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Base rule: prevent images inside .content from overflowing their container.
+// -----------------------------------------------------------------------------
 .content img {
   max-width: 100%;
 }
 
-// -------------------------------------------------------
-// Legacy content image size classes
-// Retained for backwards compatibility with existing CMS content.
-// Pair with Bootstrap float utilities (float-start / float-end) on md+.
-// On screens smaller than md these expand to full-width and clear floats.
-// -------------------------------------------------------
+// -----------------------------------------------------------------------------
+// 1. LEGACY CONTENT IMAGE SIZE CLASSES
+//
+// Retained for backwards compatibility with existing Squiz Matrix CMS content.
+// These classes are added by content editors via the WYSIWYG editor.
+//
+// Usage (CMS-generated HTML):
+//   <div class="content">
+//     <img src="..." alt="..." class="imagehalf float-start" />
+//     <p>Text wraps here...</p>
+//   </div>
+//
+// Size classes and their max-widths:
+//   .imagehalf    → max-width: 46%
+//   .imagethird   → max-width: 30%
+//   .imagequarter → max-width: 22%
+//   .imagefull    → max-width: 95%, clears floats
+//
+// Responsive behaviour:
+//   On screens < 768px (below Bootstrap md breakpoint), all float classes
+//   are overridden — images expand to full-width and stacking is enforced.
+//
+// NOTE: Do NOT use these for new development. Use .ntg-image-wrap instead.
+// -----------------------------------------------------------------------------
 .content .imagefull {
   padding: 5px;
   border: solid 1px $ntg-grey-light;
@@ -96,11 +141,16 @@
   }
 }
 
-/*
------------------------------
-Image - responsive classes applies and resizes to %
------------------------------
-*/
+// -----------------------------------------------------------------------------
+// 2. STANDALONE IMAGE UTILITY CLASSES
+//
+// Applied directly to <img> tags without requiring a .content wrapper.
+// These are used in contexts where a wrapping container is not available,
+// such as CMS page bodies or standalone content blocks.
+//
+// .imagedropshadow  → Adds border + drop shadow; max-width 50%.
+// .imagefull        → Full-width with border + shadow; clears floats.
+// -----------------------------------------------------------------------------
 .imagedropshadow {
   padding: 5px;
   border: solid 1px $ntg-grey-light;
@@ -226,6 +276,28 @@ Image - responsive classes applies and resizes to %
   clear: both;
 }
 
+// -----------------------------------------------------------------------------
+// 3. STANDALONE FLOAT IMAGE SIZE CLASSES
+//
+// Applied directly to <img> tags (no .content wrapper required).
+// Pair with Bootstrap float utilities and the gap rules below.
+//
+// Usage:
+//   Float left:  <img class="imagehalf float-start" src="..." alt="...">
+//   Float right: <img class="imagehalf float-end"   src="..." alt="...">
+//
+// Size classes and their max-widths:
+//   .imagehalf    → max-width: 46%
+//   .imagethird   → max-width: 30%
+//   .imagequarter → max-width: 22%
+//
+// Gap behaviour (see compound selectors below):
+//   .float-start + .image* → margin-right: 1.5rem  (gap between image and text)
+//   .float-end   + .image* → margin-left:  1.5rem  (gap between text and image)
+//
+// NOTE: These classes do NOT include responsive stacking on mobile.
+//       For a fully responsive solution use .ntg-image-wrap instead.
+// -----------------------------------------------------------------------------
 .imagehalf {
   padding: 5px;
   border: solid 1px $ntg-grey-light;
@@ -259,6 +331,34 @@ Image - responsive classes applies and resizes to %
   margin-left: 5px;
 }
 
+// -----------------------------------------------------------------------------
+// Float gap rules for standalone image size classes
+//
+// These compound selectors add a gap between a floated image and surrounding
+// text. They target <img> elements that carry BOTH a Bootstrap float utility
+// AND one of the standalone size classes defined above.
+//
+// float-start (left float)  → adds margin-right to push text away from the
+//                             right edge of the image.
+// float-end   (right float) → adds margin-left  to push text away from the
+//                             left edge of the image.
+//
+// The 1.5rem value matches the gap used by .ntg-image-wrap for visual
+// consistency across both patterns.
+// -----------------------------------------------------------------------------
+img.float-start.imagehalf,
+img.float-start.imagethird,
+img.float-start.imagequarter {
+  margin-right: 1.5rem;
+}
+
+img.float-end.imagehalf,
+img.float-end.imagethird,
+img.float-end.imagequarter {
+  margin-left: 1.5rem;
+}
+
+// Ensure all standalone size class images maintain natural aspect ratio.
 .imagefull,
 .imagehalf,
 .imagethird,
@@ -266,16 +366,19 @@ Image - responsive classes applies and resizes to %
   height: auto;
 }
 
-/*
------------------------------
-Fix image height for IE
------------------------------
-*/
+// -----------------------------------------------------------------------------
+// Miscellaneous image utilities
+// -----------------------------------------------------------------------------
+
+// Workaround for IE11 incorrectly collapsing flex items containing only an
+// <img>. Apply to the flex item wrapper, not the <img> itself.
 .image-height-ie {
   min-height: 10px;
   flex-shrink: 0;
 }
 
+// Adds a subtle 1px border and 4px padding around an image.
+// Use on standalone <img> elements that need a framed appearance.
 .image-border {
   border: 1px solid $light-400;
   padding: 4px;
