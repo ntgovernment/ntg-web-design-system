@@ -6,6 +6,13 @@
 .content img {
   max-width: 100%;
 }
+
+// -------------------------------------------------------
+// Legacy content image size classes
+// Retained for backwards compatibility with existing CMS content.
+// Pair with Bootstrap float utilities (float-start / float-end) on md+.
+// On screens smaller than md these expand to full-width and clear floats.
+// -------------------------------------------------------
 .content .imagefull {
   padding: 5px;
   border: solid 1px $ntg-grey-light;
@@ -25,6 +32,15 @@
   box-shadow: 1px 1px 5px $ntg-grey-strong;
   max-width: 46%;
   margin-left: 5px;
+
+  @media (max-width: #{$media-md - 1px}) {
+    float: none !important;
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
 }
 .content .imagethird {
   padding: 5px;
@@ -35,6 +51,15 @@
   box-shadow: 1px 1px 5px $ntg-grey-strong;
   max-width: 30%;
   margin-left: 5px;
+
+  @media (max-width: #{$media-md - 1px}) {
+    float: none !important;
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
 }
 .content .imagequarter {
   padding: 5px;
@@ -45,6 +70,15 @@
   box-shadow: 1px 1px 5px $ntg-grey-strong;
   max-width: 22%;
   margin-left: 5px;
+
+  @media (max-width: #{$media-md - 1px}) {
+    float: none !important;
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
 }
 .content .imagefull,
 .content .imagehalf,
@@ -53,9 +87,18 @@
   height: auto;
 }
 
+// Ensure .content areas self-clear any floated images
+.content {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
 /*
 -----------------------------
-Image - responsive clasees applies and resizes to %
+Image - responsive classes applies and resizes to %
 -----------------------------
 */
 .imagedropshadow {
@@ -76,6 +119,110 @@ Image - responsive clasees applies and resizes to %
   -webkit-box-shadow: 1px 1px 5px $ntg-grey-strong;
   box-shadow: 1px 1px 5px $ntg-grey-strong;
   max-width: 95%;
+  clear: both;
+}
+
+// -------------------------------------------------------
+// NTG Image with text wrap — modern responsive component
+//
+// Renders an inline image that floats alongside wrapped body text
+// on medium+ screens, and stacks full-width on mobile.
+//
+// Usage:
+//   <figure class="ntg-image-wrap ntg-image-wrap--left ntg-image-wrap--half">
+//     <img src="..." alt="..." />
+//     <figcaption>Optional caption</figcaption>
+//   </figure>
+//   <p>Text wraps here on desktop…</p>
+//   <div class="ntg-content-clearfix"></div>
+//
+// Size modifiers:   --half (50%) | --third (33%) | --quarter (25%)
+// Direction modifiers: --left | --right
+// Style modifiers:  --shadow | --rounded
+// -------------------------------------------------------
+
+.ntg-image-wrap {
+  display: block;
+  max-width: 100%;
+  margin-bottom: 1rem;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    width: 100%;
+  }
+
+  figcaption,
+  .ntg-image-wrap__caption {
+    font-size: $font-size-sm;
+    color: $grey-dark-100;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $ntg-sky-blue;
+    margin-top: 0;
+  }
+
+  // --- Direction modifiers (active on md+, stack on mobile) ---
+
+  &.ntg-image-wrap--left {
+    @media (min-width: $media-md) {
+      float: left;
+      margin-right: 1.5rem;
+      margin-bottom: 1rem;
+      margin-left: 0;
+    }
+  }
+
+  &.ntg-image-wrap--right {
+    @media (min-width: $media-md) {
+      float: right;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      margin-right: 0;
+    }
+  }
+
+  // --- Size modifiers (constrain width on md+) ---
+
+  &.ntg-image-wrap--half {
+    @media (min-width: $media-md) {
+      max-width: 50%;
+    }
+  }
+
+  &.ntg-image-wrap--third {
+    @media (min-width: $media-md) {
+      max-width: 33.333%;
+    }
+  }
+
+  &.ntg-image-wrap--quarter {
+    @media (min-width: $media-md) {
+      max-width: 25%;
+    }
+  }
+
+  // --- Style modifiers ---
+
+  &.ntg-image-wrap--shadow {
+    img {
+      padding: 4px;
+      border: solid 1px $ntg-grey-medium;
+      box-shadow: 1px 1px 5px $ntg-grey-strong;
+    }
+  }
+
+  &.ntg-image-wrap--rounded {
+    img {
+      border-radius: 0.25rem;
+    }
+  }
+}
+
+// Clears floated .ntg-image-wrap elements.
+// Place after the last paragraph that wraps the floated image.
+.ntg-content-clearfix {
   clear: both;
 }
 
