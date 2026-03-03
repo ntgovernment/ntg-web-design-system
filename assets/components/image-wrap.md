@@ -1,6 +1,6 @@
 # Image with text wrap component
 
-This file collects documentation for the *Image with text wrap* component. It covers both the modern `<figure>`‑based pattern and the legacy/image utility classes that were previously scattered across SCSS comments and boilerplate examples.
+This file collects documentation for the _Image with text wrap_ component. It covers both the modern `<figure>`‑based pattern and the legacy/image utility classes that were previously scattered across SCSS comments and boilerplate examples.
 
 ## Overview
 
@@ -10,7 +10,7 @@ There are three different image systems in the codebase:
    - Added by content editors in Squiz Matrix WYSIWYG fields.
    - Designed to float alongside text using Bootstrap's `float-start`/`float-end` utilities.
    - Automatically collapse to full width on screens below `md`.
-   - These classes remain in the stylesheet for backward compatibility but should *not* be used for new work.
+   - These classes remain in the stylesheet for backward compatibility but should _not_ be used for new work.
 
 2. **Modern component** (`.ntg-image-wrap`)
    - Usage:
@@ -32,7 +32,7 @@ There are three different image systems in the codebase:
    - Pair with Bootstrap float utilities. Gap rules exist to add spacing between the image and text:
      - `img.float-start.image* { margin-right: 1.5rem; }`
      - `img.float-end.image*   { margin-left:  1.5rem; }`
-   - These classes do *not* include mobile stacking; prefer `.ntg-image-wrap` when possible.
+   - These classes do _not_ include mobile stacking; prefer `.ntg-image-wrap` when possible.
 
 ## Migrating content
 
