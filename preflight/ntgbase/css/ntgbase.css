@@ -15865,6 +15865,29 @@ img.float-end.imagequarter {
   height: auto;
 }
 
+img.image-left,
+img.image-right {
+  padding: 5px;
+  border: solid 1px #efefef;
+  border: solid 1px #ccc;
+  -moz-box-shadow: 1px 1px 5px #999;
+  -webkit-box-shadow: 1px 1px 5px #999;
+  box-shadow: 1px 1px 5px #999;
+  max-width: 30%;
+  height: auto;
+}
+
+img.image-left {
+  float: left;
+  margin-right: 1.5rem;
+  margin-left: 5px;
+}
+
+img.image-right {
+  float: right;
+  margin-left: 1.5rem;
+}
+
 .image-height-ie {
   min-height: 10px;
   flex-shrink: 0;
