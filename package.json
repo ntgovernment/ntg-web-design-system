@@ -14,7 +14,6 @@
     "colors": "^1.4.0",
     "grunt": "^1.6.1",
     "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-connect": "^3.0.0",
     "grunt-contrib-cssmin": "^4.0.0",
     "grunt-contrib-uglify": "^5.0.1",
     "grunt-contrib-watch": "^1.1.0",
@@ -25,5 +24,10 @@
   "dependencies": {
     "grunt-cli": "^1.4.3",
     "sass-mixins": "^0.13.0"
+  },
+  "overrides": {
+    "js-yaml": ">=3.14.2",
+    "qs": ">=6.14.2",
+    "lodash": ">=4.17.23"
   }
 }
