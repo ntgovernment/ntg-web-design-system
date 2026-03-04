@@ -20,7 +20,8 @@ Clone the GIT repository from [https://github.com/ntgovernment](https://github.c
 
 #### Key directories:
 
-- **docs:** Documentation of available features/components hosted at nt.gov.au.
+- **docs/components:** Component documentation and example pages (moved from assets/components).
+- **docs:** Additional documentation of available features/components hosted at nt.gov.au.
 - **scss:** Uncompiled SCSS stylesheets used to build themes.
 - **ntgbase:** Assets in this folder for NTGov core theme.
 - **partials:** NTGov design elements for blending NTGov theme (framework) with Bootstrap (foundation) or one of your own projects.

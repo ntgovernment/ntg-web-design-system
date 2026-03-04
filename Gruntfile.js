@@ -122,6 +122,17 @@ module.exports = function (grunt) {
       bootstrap: {},
       jquery: {},
     },
+    connect: {
+      server: {
+        options: {
+          port: 8080,
+          base: ".",
+          open: true,
+          livereload: false,
+          keepalive: false,
+        },
+      },
+    },
     watch: {
       ntgbaseSass: {
         files: ["src/sass/ntgbase/*.scss"],
@@ -158,6 +169,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-contrib-connect");
 
   grunt.registerTask("ntgbase", [
     "sass:ntgbase",
@@ -181,6 +193,7 @@ module.exports = function (grunt) {
     "fontawesome",
     "bootstrap",
     "jquery",
+    "connect:server",
     "watch",
   ]);
 };

@@ -15875,6 +15875,7 @@ img.image-right {
   box-shadow: 1px 1px 5px #999;
   max-width: 30%;
   height: auto;
+  margin-bottom: 1.5rem;
 }
 
 img.image-left {
@@ -15888,6 +15889,16 @@ img.image-right {
   margin-left: 1.5rem;
 }
 
+@media (max-width: 767px) {
+  img.image-left,
+  img.image-right {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
 .image-height-ie {
   min-height: 10px;
   flex-shrink: 0;

@@ -313,6 +313,7 @@ img.image-right {
   box-shadow: 1px 1px 5px $ntg-grey-strong;
   max-width: 30%;
   height: auto;
+  margin-bottom: 1.5rem;
 }
 
 img.image-left {
@@ -324,6 +325,17 @@ img.image-left {
 img.image-right {
   float: right;
   margin-left: 1.5rem;
+}
+
+@media (max-width: #{$media-md - 1px}) {
+  img.image-left,
+  img.image-right {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 // -----------------------------------------------------------------------------
