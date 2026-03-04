@@ -15889,7 +15889,7 @@ img.image-right {
   margin-left: 1.5rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 575px) {
   img.image-left,
   img.image-right {
     float: none;
