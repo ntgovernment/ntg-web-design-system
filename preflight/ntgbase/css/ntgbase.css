@@ -15873,30 +15873,57 @@ img.image-right {
   -moz-box-shadow: 1px 1px 5px #999;
   -webkit-box-shadow: 1px 1px 5px #999;
   box-shadow: 1px 1px 5px #999;
-  max-width: 30%;
   height: auto;
-  margin-bottom: 1.5rem;
 }
 
 img.image-left {
-  float: left;
-  margin-right: 1.5rem;
-  margin-left: 5px;
+  max-width: 100%;
 }
 
 img.image-right {
-  float: right;
-  margin-left: 1.5rem;
+  max-width: 100%;
 }
 
+@media (min-width: 576px) {
+  p:has(> img.image-left) {
+    display: inline-block;
+    vertical-align: top;
+    width: 32%;
+    margin-right: 3%;
+    margin-bottom: 0;
+  }
+  p:has(> img.image-left) + p {
+    display: inline-block;
+    vertical-align: top;
+    width: 64%;
+    margin-bottom: 0;
+  }
+  p:has(> img.image-right) {
+    float: right;
+    width: 32%;
+    margin-bottom: 0;
+  }
+  p:has(> img.image-right) + p {
+    float: left;
+    width: 64%;
+    margin-bottom: 0;
+  }
+}
 @media (max-width: 575px) {
-  img.image-left,
-  img.image-right {
+  p:has(> img.image-left),
+  p:has(> img.image-left) + p,
+  p:has(> img.image-right),
+  p:has(> img.image-right) + p {
+    display: block;
     float: none;
     width: 100%;
-    max-width: 100%;
-    margin-left: 0;
     margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+  p:has(> img.image-left) + p,
+  p:has(> img.image-right) + p {
+    margin-bottom: 0;
   }
 }
 .image-height-ie {

@@ -122,21 +122,7 @@
 
 // -------------------------------------------------------
 // NTG Image with text wrap — modern responsive component
-//
-// Renders an inline image that floats alongside wrapped body text
-// on medium+ screens, and stacks full-width on mobile.
-//
-// Usage:
-//   <figure class="ntg-image-wrap ntg-image-wrap--left ntg-image-wrap--half">
-//     <img src="..." alt="..." />
-//     <figcaption>Optional caption</figcaption>
-//   </figure>
-//   <p>Text wraps here on desktop…</p>
-//   <div class="ntg-content-clearfix"></div>
-//
-// Size modifiers:   --half (50%) | --third (33%) | --quarter (25%)
-// Direction modifiers: --left | --right
-// Style modifiers:  --shadow | --rounded
+// See `assets/components/image-wrap.md` for usage details and examples.
 // -------------------------------------------------------
 
 .ntg-image-wrap {
@@ -294,14 +280,14 @@ img.float-end.imagequarter {
 }
 
 // -----------------------------------------------------------------------------
-// Convenience directional classes — equivalent to .imagethird + float-start/end
+// Convenience directional classes
 //
-// .image-left  → floats left  at one-third width with right margin gap
+// .image-left  → two-column layout with adjacent paragraph (desktop)
 // .image-right → floats right at one-third width with left  margin gap
 //
 // Usage:
 //   <img class="image-left" src="..." alt="...">
-//   <p>Text wraps to the right…</p>
+//   <p>Adjacent paragraph renders as right column on desktop.</p>
 // -----------------------------------------------------------------------------
 img.image-left,
 img.image-right {
@@ -311,30 +297,64 @@ img.image-right {
   -moz-box-shadow: 1px 1px 5px $ntg-grey-strong;
   -webkit-box-shadow: 1px 1px 5px $ntg-grey-strong;
   box-shadow: 1px 1px 5px $ntg-grey-strong;
-  max-width: 30%;
   height: auto;
-  margin-bottom: 1.5rem;
 }
 
 img.image-left {
-  float: left;
-  margin-right: 1.5rem;
-  margin-left: 5px;
+  max-width: 100%;
 }
 
 img.image-right {
-  float: right;
-  margin-left: 1.5rem;
+  max-width: 100%;
+}
+
+@media (min-width: $media-sm) {
+  // Columns from sm+ for pattern: <p><img class="image-left"></p><p>text...</p>
+  p:has(> img.image-left) {
+    display: inline-block;
+    vertical-align: top;
+    width: 32%;
+    margin-right: 3%;
+    margin-bottom: 0;
+  }
+
+  p:has(> img.image-left) + p {
+    display: inline-block;
+    vertical-align: top;
+    width: 64%;
+    margin-bottom: 0;
+  }
+
+  // Columns from sm+ for pattern: <p><img class="image-right"></p><p>text...</p>
+  p:has(> img.image-right) {
+    float: right;
+    width: 32%;
+    margin-bottom: 0;
+  }
+
+  p:has(> img.image-right) + p {
+    float: left;
+    width: 64%;
+    margin-bottom: 0;
+  }
 }
 
 @media (max-width: #{$media-sm - 1px}) {
-  img.image-left,
-  img.image-right {
+  p:has(> img.image-left),
+  p:has(> img.image-left) + p,
+  p:has(> img.image-right),
+  p:has(> img.image-right) + p {
+    display: block;
     float: none;
     width: 100%;
-    max-width: 100%;
-    margin-left: 0;
     margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+
+  p:has(> img.image-left) + p,
+  p:has(> img.image-right) + p {
+    margin-bottom: 0;
   }
 }
 
