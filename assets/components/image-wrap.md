@@ -34,6 +34,59 @@ There are three different image systems in the codebase:
      - `img.float-end.image*   { margin-left:  1.5rem; }`
    - These classes do _not_ include mobile stacking; prefer `.ntg-image-wrap` when possible.
 
+4. **Directional utility classes** (`.image-left`, `.image-right`)
+   These provide a lightweight, markup‑level two‑column layout using only
+   paragraphs and the `:has()` pseudo‑selector. They exist purely in the
+   stylesheet and require the precise DOM pattern shown below; if your
+   markup cannot be structured this way, use the `.ntg-image-wrap`
+   component instead.
+   - **Markup pattern**
+
+     ```html
+     <p><img class="image-left" src="..." alt="..." /></p>
+     <p>Text that will sit to the right of the image on desktop.</p>
+     <!-- or for the opposite orientation -->
+     <p><img class="image-right" src="..." alt="..." /></p>
+     <p>Text that will sit to the left of the image on desktop.</p>
+     ```
+
+     - the `<img>` must be the only child of its paragraph.
+     - the text paragraph must immediately follow the image paragraph.
+     - extra wrapper elements break the selector logic.
+
+   - **Desktop layout (sm and above / ≥576px)**
+     - `.image-left`: image column is _32%_ wide with a right-hand gap of
+       _3%_; the adjacent paragraph fills _64%_.
+     - `.image-right`: image column floats right at _32%_; the following
+       paragraph floats left at _64%_.
+     - the 3 % gap ensures the combined width never exceeds 99 %, avoiding
+       wrapping issues.
+     - layout is achieved purely with CSS – no additional floats or grid
+       utilities required for `.image-left`.
+
+   - **Mobile behaviour (xs / <576px)**
+     - both classes revert to block display; paragraphs stack vertically
+       in source order with no horizontal margins or floats.
+     - float resets are applied for the `.image-right` pattern.
+
+   - **Browser support & notes**
+     - relies on the `:has()` selector which is supported in modern
+       Chromium, WebKit and Firefox releases; it does _not_ work in
+       Internet Explorer or the last legacy Safari versions.
+     - this pattern was introduced to replace the previous float‑based
+       `.imagethird` gap hacks; the old utility classes (`.imagethird`,
+       etc.) remain for backward compatibility but new content should
+       prefer this directional pattern or the `.ntg-image-wrap`
+       component.
+     - `.image-right` uses float-based columns intentionally to keep the
+       text on the left; since the layout is applied to sibling
+       paragraphs the float order mirrors the visual order.
+
+   For full details and the reasoning behind each system, see the source
+   comments in `src/sass/ntgbase/partials/ntgovau-images.scss` and
+   search for `// .image-left` as a bookmark.  
+   The markup examples live in `index.html` under the **Images** section.
+
 ## Migrating content
 
 - Existing CMS content using the legacy `.content .image*` classes will continue to function.
