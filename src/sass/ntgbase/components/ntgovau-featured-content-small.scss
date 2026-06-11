@@ -108,7 +108,10 @@ Featured content - small
 
 @media (max-width: 767px) {
   .ntg-featured-content-small__buttons > .ntg-btn--secondary {
-    display: table-cell !important;
+    /*display: table-cell !important;*/
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
   }
 }
 
