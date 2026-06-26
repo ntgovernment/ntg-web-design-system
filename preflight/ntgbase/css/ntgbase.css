@@ -13743,6 +13743,7 @@ Featured content - small
     display: flex !important;
     align-items: center;
     justify-content: center;
+    gap: 5px;
   }
 }
 @media (min-width: 768px) {
