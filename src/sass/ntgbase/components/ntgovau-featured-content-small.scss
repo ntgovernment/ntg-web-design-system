@@ -113,6 +113,11 @@ Featured content - small
     justify-content: center;
     gap: 5px;
   }
+  .ntg-featured-content-small__buttons
+    > .ntg-btn--secondary
+    [class^="icon_"]::before {
+    padding-right: 0 !important;
+  }
 }
 
 @media (min-width: 768px) {
